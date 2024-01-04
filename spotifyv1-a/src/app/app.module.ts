@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ExampleComponent } from './example/example.component';
 
 @NgModule({
-  declarations: [AppComponent, ExampleComponent],
-  imports: [
+  declarations: [AppComponent],//componntes directivas y pipies
+  imports: [//solo se importan otros modulos
     BrowserModule,
     AppRoutingModule
   ],
