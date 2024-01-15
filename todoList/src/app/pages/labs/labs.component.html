@@ -7,13 +7,18 @@
       </li>
     </ul>
     <hr />
-  
+
     <!-- el uso de {{}} hace que un html normal se vuelva dinamico y podamos operar -->
     <!-- para utilizar valores quwe estan en el controlador desde el html, se usan los [], para llamar a los valores que tengamos en el controlador -->
     <h2>mi nombre es {{ name }}</h2>
-  
+
     <button (click)="clickHandler()">click mee</button>
     <button (dblclick)="clickHandler()">dbclick mee</button>
-  
+
+
+    <!-- <input type="text" [value] = "person.name" (keydown)="keydownHandler($event)"> -->
+
+
+
   </div>
-  
+

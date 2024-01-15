@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-labs',
+  selector: 'app-LabsComponentmponent',
   standalone: true,
   imports: [],
   templateUrl: './labs.component.html',
@@ -18,5 +18,10 @@ export class LabsComponent {
 
   clickHandler(){
     alert('hola!')
+  }
+
+  keydownHandler(event: KeyboardEvent){
+    const input = event.target as HTMLInputElement;
+    console.log(input.value)
   }
 }
