@@ -1,3 +1,4 @@
+import { signal } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -14,10 +15,18 @@ export class LabsComponent {
     'Componentes',
     'de computadores'
   ]
-  name = 'jimi joe';
+  name = signal('jimi joe');
+  age = 18;
+
 
   clickHandler(){
     alert('hola!')
+  }
+
+  changeHandler(event: Event){
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.name.set(newValue);
   }
 
   keydownHandler(event: KeyboardEvent){

@@ -1,24 +1,29 @@
 <div class="container">
     <h1>mismo</h1>
     <h2>{{ title }}</h2>
-    <ul>
+    <!-- <ul>
       <li *ngFor="let l1 of task">
         {{ l1 }}
       </li>
-    </ul>
+    </ul> -->
     <hr />
 
     <!-- el uso de {{}} hace que un html normal se vuelva dinamico y podamos operar -->
     <!-- para utilizar valores quwe estan en el controlador desde el html, se usan los [], para llamar a los valores que tengamos en el controlador -->
-    <h2>mi nombre es {{ name }}</h2>
+
+    <h2>mi nombre es {{ name}}</h2>
 
     <button (click)="clickHandler()">click mee</button>
     <button (dblclick)="clickHandler()">dbclick mee</button>
 
+   <!-- Lo importante de las señales es que cada accion que ejecutamos manda una señal
+  que modifica el arbol de eventos automaticamente -->
+    <h1>signals</h1>
 
-    <!-- <input type="text" [value] = "person.name" (keydown)="keydownHandler($event)"> -->
+    <h2>Hola soy {{name()}}</h2>
+    <input type="text" [value]="name()" (change) = "changeHandler($event)">
 
-
+    <p>name : {{name()}}</p>
 
   </div>
 
