@@ -1,11 +1,11 @@
 <div class="container">
     <h1>mismo</h1>
     <h2>{{ title }}</h2>
-    <!-- <ul>
-      <li *ngFor="let l1 of task">
+    <ul>
+      <li *ngFor="let l1 of tasks ();">
         {{ l1 }}
       </li>
-    </ul> -->
+    </ul>
     <hr />
 
     <!-- el uso de {{}} hace que un html normal se vuelva dinamico y podamos operar -->
@@ -24,6 +24,18 @@
     <input type="text" [value]="name()" (change) = "changeHandler($event)">
 
     <p>name : {{name()}}</p>
+
+
+    <br>
+
+    <!-- Las directivas de control son como las directicas como if, for, pero con mas
+    funcionalidades -->
+    <p>total : {{tasks().length}}</p>
+    <ul>
+      <li *ngFor="let l1 of tasks (); index as i ">
+        {{i}} {{ l1 }}
+      </li>
+    </ul>
 
   </div>
 
