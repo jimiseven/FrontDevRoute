@@ -6,7 +6,7 @@
         <p>All my tasks in one place</p>
         <input
           class="new-todo"
-          placeholder="Type new todo"
+          placeholder="Ingresar tarea"
           autofocus
           type="text"
           (change)="changeHandler($event)"
@@ -20,7 +20,7 @@
           <li *ngFor="let task of tasks(); index as i">
             <div class="view">
               <input class="toggle" type="checkbox" />
-              <label>{{ task.title }}</label>
+              <label>{{ task }}</label>
               <button class="destroy" (click)="deleteTask(i)"></button>
             </div>
             <input class="edit" value="Buy a unicorn" />
