@@ -56,5 +56,17 @@
     <ng-template #elseBlock>
       informacion del ng template
     </ng-template>
+
+
+    <hr />
+
+    <div [ngSwitch]="person().name">
+      <p *ngSwitchCase = "'jimi'"> soy jimi</p>
+      <p *ngSwitchCase = "'joe'"> soy joe</p>
+      <p *ngSwitchCase = "'marsh'"> soy marsh</p>
+      <p *ngSwitchCase = "'jimij'"> soy jimij</p>
+      <!-- <div *ngSwitchCase="expression">output</div> -->
+      <p *ngSwitchDefault>Sin informacion</p>
+    </div>
   </div>
 

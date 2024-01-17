@@ -20,7 +20,7 @@ export class LabsComponent {
   age = 18;
 
   person = signal ({
-    name : 'jimi',
+    name : '',
     age : 16
   })
 
