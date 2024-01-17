@@ -37,5 +37,24 @@
       </li>
     </ul>
 
+    <!-- hacemos uso del ngif como conficionales dentro del HTML -->
+    <div *ngIf="1 !== 1">
+      Mi contenido
+    </div>
+    <div *ngIf="name() === 'jimi joe'">
+      Mi contenido de nombre
+    </div>
+
+    <!-- recuerda que para usar el valor o los valores de una señal tenemos que suscribirnos al obgeto -->
+    <!-- Estariamos usado los objetos como entrado a los atributos de un objeto -->
+    <div *ngIf="person().name === 'jimi' && person().age > 17; else elseBlock">
+      <!-- interesante por que si no se cumple podemos generar el if con lo que si se cumplira -->
+      Obejto señal
+    </div>
+
+    <!-- parte que se realiza si no cumple el if anterior -->
+    <ng-template #elseBlock>
+      informacion del ng template
+    </ng-template>
   </div>
 

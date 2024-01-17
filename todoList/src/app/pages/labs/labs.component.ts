@@ -19,6 +19,10 @@ export class LabsComponent {
   name = signal('jimi joe');
   age = 18;
 
+  person = signal ({
+    name : 'jimi',
+    age : 16
+  })
 
   clickHandler(){
     alert('hola!')
