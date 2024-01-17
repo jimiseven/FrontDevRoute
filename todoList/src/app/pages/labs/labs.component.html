@@ -60,6 +60,8 @@
 
     <hr />
 
+
+    <!-- entonces con este es un uso de switch en angular, tomar en cuenta que tambien puede ser reactivo -->
     <div [ngSwitch]="person().name">
       <p *ngSwitchCase = "'jimi'"> soy jimi</p>
       <p *ngSwitchCase = "'joe'"> soy joe</p>
@@ -68,5 +70,13 @@
       <!-- <div *ngSwitchCase="expression">output</div> -->
       <p *ngSwitchDefault>Sin informacion</p>
     </div>
+
+
+    <hr />
+    <!-- Entonces Angular tiene sus propios atajos para mejorar la experiencia de desarrollo
+    para la creacion del html -->
+    <input type="color" [formControl] = "colorCtrl">
+    <p>color: {{ colorCtrl.value }}</p>
+
   </div>
 
