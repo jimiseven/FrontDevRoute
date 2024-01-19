@@ -77,6 +77,15 @@
     para la creacion del html -->
     <input type="color" [formControl] = "colorCtrl">
     <p>color: {{ colorCtrl.value }}</p>
+    <svg class="a">
+      <g class="a">
+        <rect x="0" y = "0" height = "100" width ="100" [attr.fill]="colorCtrl.value">
 
+        </rect>
+      </g>
+    </svg>
+
+    <input type="number" [formControl] = "widthCtrl">
+    <span class="box" [style.width.px] = "widthCtrl.value"></span>
   </div>
 
