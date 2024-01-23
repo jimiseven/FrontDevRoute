@@ -1,91 +1,104 @@
 <div class="container">
-    <h1>mismo</h1>
-    <h2>{{ title }}</h2>
-    <ul>
-      <li *ngFor="let l1 of tasks ();">
-        {{ l1 }}
-      </li>
-    </ul>
-    <hr />
+  <h1>mismo</h1>
+  <h2>{{ title }}</h2>
+  <ul>
+    <li *ngFor="let l1 of tasks ();">
+      {{ l1 }}
+    </li>
+  </ul>
+  <hr />
 
-    <!-- el uso de {{}} hace que un html normal se vuelva dinamico y podamos operar -->
-    <!-- para utilizar valores quwe estan en el controlador desde el html, se usan los [], para llamar a los valores que tengamos en el controlador -->
+  <!-- el uso de {{}} hace que un html normal se vuelva dinamico y podamos operar -->
+  <!-- para utilizar valores quwe estan en el controlador desde el html, se usan los [], para llamar a los valores que tengamos en el controlador -->
 
-    <h2>mi nombre es {{ name}}</h2>
+  <h2>mi nombre es {{ name}}</h2>
 
-    <button (click)="clickHandler()">click mee</button>
-    <button (dblclick)="clickHandler()">dbclick mee</button>
+  <button (click)="clickHandler()">click mee</button>
+  <button (dblclick)="clickHandler()">dbclick mee</button>
 
-   <!-- Lo importante de las señales es que cada accion que ejecutamos manda una señal
+  <!-- Lo importante de las señales es que cada accion que ejecutamos manda una señal
   que modifica el arbol de eventos automaticamente -->
-    <h1>signals</h1>
+  <h1>signals</h1>
 
-    <h2>Hola soy {{name()}}</h2>
-    <input type="text" [value]="name()" (change) = "changeHandler($event)">
+  <h2>Hola soy {{name()}}</h2>
+  <input type="text" [value]="name()" (change)="changeHandler($event)">
 
-    <p>name : {{name()}}</p>
+  <p>name : {{name()}}</p>
 
 
-    <br>
+  <br>
 
-    <!-- Las directivas de control son como las directicas como if, for, pero con mas
+  <!-- Las directivas de control son como las directicas como if, for, pero con mas
     funcionalidades -->
-    <p>total : {{tasks().length}}</p>
-    <ul>
-      <li *ngFor="let l1 of tasks (); index as i ">
-        {{i}} {{ l1 }}
-      </li>
-    </ul>
+  <p>total : {{tasks().length}}</p>
+  <ul>
+    <li *ngFor="let l1 of tasks (); index as i ">
+      {{i}} {{ l1 }}
+    </li>
+  </ul>
 
-    <!-- hacemos uso del ngif como conficionales dentro del HTML -->
-    <div *ngIf="1 !== 1">
-      Mi contenido
-    </div>
-    <div *ngIf="name() === 'jimi joe'">
-      Mi contenido de nombre
-    </div>
-
-    <!-- recuerda que para usar el valor o los valores de una señal tenemos que suscribirnos al obgeto -->
-    <!-- Estariamos usado los objetos como entrado a los atributos de un objeto -->
-    <div *ngIf="person().name === 'jimi' && person().age > 17; else elseBlock">
-      <!-- interesante por que si no se cumple podemos generar el if con lo que si se cumplira -->
-      Obejto señal
-    </div>
-
-    <!-- parte que se realiza si no cumple el if anterior -->
-    <ng-template #elseBlock>
-      informacion del ng template
-    </ng-template>
-
-
-    <hr />
-
-
-    <!-- entonces con este es un uso de switch en angular, tomar en cuenta que tambien puede ser reactivo -->
-    <div [ngSwitch]="person().name">
-      <p *ngSwitchCase = "'jimi'"> soy jimi</p>
-      <p *ngSwitchCase = "'joe'"> soy joe</p>
-      <p *ngSwitchCase = "'marsh'"> soy marsh</p>
-      <p *ngSwitchCase = "'jimij'"> soy jimij</p>
-      <!-- <div *ngSwitchCase="expression">output</div> -->
-      <p *ngSwitchDefault>Sin informacion</p>
-    </div>
-
-
-    <hr />
-    <!-- Entonces Angular tiene sus propios atajos para mejorar la experiencia de desarrollo
-    para la creacion del html, importante -->
-    <input type="color" [formControl] = "colorCtrl">
-    <p>color: {{ colorCtrl.value }}</p>
-    <svg class="a">
-      <g class="a">
-        <rect x="0" y = "0" height = "100" width ="100" [attr.fill]="colorCtrl.value">
-
-        </rect>
-      </g>
-    </svg>
-
-    <input type="number" [formControl] = "widthCtrl">
-    <span class="box" [style.width.px] = "widthCtrl.value"></span>
+  <!-- hacemos uso del ngif como conficionales dentro del HTML -->
+  <div *ngIf="1 !== 1">
+    Mi contenido
+  </div>
+  <div *ngIf="name() === 'jimi joe'">
+    Mi contenido de nombre
   </div>
 
+  <!-- recuerda que para usar el valor o los valores de una señal tenemos que suscribirnos al obgeto -->
+  <!-- Estariamos usado los objetos como entrado a los atributos de un objeto -->
+  <div *ngIf="person().name === 'jimi' && person().age > 17; else elseBlock">
+    <!-- interesante por que si no se cumple podemos generar el if con lo que si se cumplira -->
+    Obejto señal
+  </div>
+
+  <!-- parte que se realiza si no cumple el if anterior -->
+  <ng-template #elseBlock>
+    informacion del ng template
+  </ng-template>
+
+
+  <hr />
+
+
+  <!-- entonces con este es un uso de switch en angular, tomar en cuenta que tambien puede ser reactivo -->
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'jimi'"> soy jimi</p>
+    <p *ngSwitchCase="'joe'"> soy joe</p>
+    <p *ngSwitchCase="'marsh'"> soy marsh</p>
+    <p *ngSwitchCase="'jimij'"> soy jimij</p>
+    <!-- <div *ngSwitchCase="expression">output</div> -->
+    <p *ngSwitchDefault>Sin informacion</p>
+  </div>
+
+
+  <hr />
+  <!-- Entonces Angular tiene sus propios atajos para mejorar la experiencia de desarrollo
+    para la creacion del html, importante -->
+  <input type="color" [formControl]="colorCtrl">
+  <p>color: {{ colorCtrl.value }}</p>
+  <svg class="a">
+    <g class="a">
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value">
+
+      </rect>
+    </g>
+  </svg>
+
+  <input type="number" [formControl]="widthCtrl">
+  <span class="box" [style.width.px]="widthCtrl.value"></span>
+
+
+
+  <p>
+    <input type="text" [formControl]="nameCtrl"> <br />
+    <span class="message-error" [class.show] = "nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span>
+  </p>
+  <!-- Mediante las funciones de angular podemos hacer cambios tambien en la logica, pero tambien
+  afecta los elementos en el html, existen varias clases que se pueden usar para hacer un buen uso
+de los elementos   del html-->
+
+
+  <input type="text">
+
+</div>
