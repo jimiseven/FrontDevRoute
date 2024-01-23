@@ -61,14 +61,15 @@
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
 
-      <div *ngIf="tasks().length < 2; else elseBlock">
+      <span *ngIf="tasks().length < 2; else elseBlock">
         <!-- interesante por que si no se cumple podemos generar el if con lo que si se cumplira -->
-        <span class="todo-count"><strong>{{tasks().length}};</strong> item</span>
-      </div>
+        <span class="todo-count"><strong>{{taskByFilter().length}};</strong> item</span>
+        <!-- al usar taskByFilter, usamos el estado que recibimos de un estado anterior -->
+      </span>
 
       <!-- parte que se realiza si no cumple el if anterior -->
       <ng-template #elseBlock>
-        <span class="todo-count"><strong>{{tasks().length}};</strong> items</span>
+        <span class="todo-count"><strong>{{taskByFilter().length}};</strong> items</span>
       </ng-template>
 
 
