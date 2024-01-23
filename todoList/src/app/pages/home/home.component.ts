@@ -1,6 +1,6 @@
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 //import { title } from 'process';
 
 import { Task } from '../../models/task.model';
@@ -45,7 +45,7 @@ export class HomeComponent {
     // const newTask = input.value;
     if (this.newTaskCtrl.valid) {
       //verificamos la valides del input
-      const value = this.newTaskCtrl.value.trim();//limpia los estapacios de fin y final
+      const value = this.newTaskCtrl.value.trim(); //limpia los estapacios de fin y final
       if (value !== '') {
         this.addTaks(value); //guardamos el valor con addTaks
         this.newTaskCtrl.setValue(''); //limpiamos el input despues de recoger el valor
@@ -81,24 +81,41 @@ export class HomeComponent {
     });
   }
 
-  updateTaskEd(index: number){
+  updateTaskEd(index: number) {
     this.tasks.update((tasks) => {
       return tasks.map((task, position) => {
         if (position === index) {
           return {
             ...task,
-            editing: true
+            editing: true,
           };
         }
         return {
           ...task,
-          editing: false
-        }
+          editing: false,
+        };
       });
     });
   }
 
-  updateText(index: number, event : Event){
+  //estado que se basa en el estado de otros estados..
+  //un estado que depende de otros estados es un estado computado
+  filter = signal<'all' | 'pending' | 'completed'>('all');
+  taskByFilter = computed(() => {
+    const filter = this.filter();
+    const tasks = this.tasks();//mucho cuidado con el nombre de las variables
+
+
+    if (filter === 'pending') {
+      return tasks.filter(task => !task.completed);
+    }
+    if (filter === 'completed') {
+      return tasks.filter(task => task.completed);
+    }
+    return tasks;
+  });
+
+  updateText(index: number, event: Event) {
     const input = event.target as HTMLInputElement;
     this.tasks.update((tasks) => {
       return tasks.map((task, position) => {
@@ -106,11 +123,16 @@ export class HomeComponent {
           return {
             ...task,
             title: input.value,
-            editing: false
+            editing: false,
           };
         }
         return task;
       });
     });
+  }
+
+  changeFilter(filter: 'all' | 'pending' | 'completed') {
+    this.filter.set(filter),
+     console.log(filter); //renderisamos el valor de filter por el console log
   }
 }

@@ -19,7 +19,7 @@
     <section class="main">
       <ul class="todo-list">
         <li (dblclick)="updateTaskEd(i)"
-        *ngFor="let task of tasks(); index as i"
+        *ngFor="let task of taskByFilter(); index as i"
         [class.editing]="task.editing"
         [class.completed]="task.completed">
           <div class="view">
@@ -74,15 +74,17 @@
 
       <!-- <span class="todo-count"><strong>{{tasks().length}};</strong> items</span> -->
       <!-- Remove this if you don't implement routing -->
+      <!-- <h1>estado filter : {{filter()}}</h1> -->
+      <!-- con la linea de arriba obtenemos el valor del filter -->
       <ul class="filters">
         <li>
-          <a routerLink="/" class="selected">All</a>
+          <a (click)="changeFilter('all')" class="selected">All</a>
         </li>
         <li>
-          <a routerLink="/pending">Pending</a>
+          <a (click)="changeFilter('pending')">Pending</a>
         </li>
         <li>
-          <a routerLink="/completed">Completed</a>
+          <a (click)="changeFilter('completed')">Completed</a>
         </li>
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
