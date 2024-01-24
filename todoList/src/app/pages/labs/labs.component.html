@@ -74,14 +74,7 @@
 
 
   <!-- entonces con este es un uso de switch en angular, tomar en cuenta que tambien puede ser reactivo -->
-  <div [ngSwitch]="person().name">
-    <p *ngSwitchCase="'jimi'"> soy jimi</p>
-    <p *ngSwitchCase="'joe'"> soy joe</p>
-    <p *ngSwitchCase="'marsh'"> soy marsh</p>
-    <p *ngSwitchCase="'jimij'"> soy jimij</p>
-    <!-- <div *ngSwitchCase="expression">output</div> -->
-    <p *ngSwitchDefault>Sin informacion</p>
-  </div>
+
 
 
   <hr />
@@ -113,38 +106,38 @@ de los elementos   del html-->
 
   <input type="text">
 
-<ul>
-  @for (task of tasks() ; track task ; let i = $index) {
+  <ul>
+    @for (task of tasks() ; track task ; let i = $index) {
     <li>{{ i }} {{tasks()}}</li>
-  }@empty {
-   <li><strong>lista esta vacia</strong></li>
-  }
-</ul>
-<!-- para tene una mejor comprecion o estar mas informados sobre el funcionanmiento de las sintaxis nueva
+    }@empty {
+    <li><strong>lista esta vacia</strong></li>
+    }
+  </ul>
+  <!-- para tene una mejor comprecion o estar mas informados sobre el funcionanmiento de las sintaxis nueva
 de angular lo mejor es revisar la documentacion -->
 
-<div>
-  @switch (person().name) {
+  <div>
+    @switch (person().name) {
     @case ('jimi') {
-      <p>jimi 1</p>
+    <p>jimi 1</p>
     }
     @case ('joe') {
-      <p>joe 1</p>
+    <p>joe 1</p>
     }
     @case ('torrico') {
-      <p>torrico 1</p>
+    <p>torrico 1</p>
     }
     @case ('peredo') {
-      <p>peredo 1</p>
+    <p>peredo 1</p>
     }
     @default {
-      <p>en caso de que se salga</p>
+    <p>en caso de que se salga</p>
     }
-  }
+    }
+  </div>
+
+
+  <!-- tomar en cuenta la migracion o uso de cambio de sintaxis, gracias a angular lo podemos hacer
+mediante comandos de angular -->
+
 </div>
-
-
-</div>
-
-
-

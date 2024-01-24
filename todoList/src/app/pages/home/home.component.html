@@ -5,91 +5,91 @@
       <p>All my tasks in one place</p>
       <input class="new-todo" placeholder="Ingresar tarea" autofocus type="text" [formControl]="newTaskCtrl"
         (keydown.enter)="changeHandler()" />
-    </div>
-  </header>
-  <div class="container todoapp-wrapper">
-    <!-- This section should be hidden by default and shown when there are todos -->
-    <!-- Esta parte muestra el Json, donde se guarda la informacion -->
-    <pre>
+      </div>
+    </header>
+    <div class="container todoapp-wrapper">
+      <!-- This section should be hidden by default and shown when there are todos -->
+      <!-- Esta parte muestra el Json, donde se guarda la informacion -->
+      <pre>
         <code>
           {{tasks () | json}}
         </code>
       </pre>
-    <!-- Esta parte muestra el Json, donde se guarda la informacion -->
-    <section class="main">
-      <ul class="todo-list">
-        <li (dblclick)="updateTaskEd(i)"
-        *ngFor="let task of taskByFilter(); index as i"
-        [class.editing]="task.editing"
-        [class.completed]="task.completed">
-          <div class="view">
-            <input class="toggle" type="checkbox" [checked]="task.completed" (change)=updateTaks(i) />
-            <label>{{ task.title }}</label>
-            <button class="destroy" (click)="deleteTask(i)"></button>
-          </div>
-          <input class="edit"(keydown.enter)="updateText(i, $event)" [value]="task.title" />
-        </li>
+      <!-- Esta parte muestra el Json, donde se guarda la informacion -->
+      <section class="main">
+        <ul class="todo-list">
+          @for (task of taskByFilter(); track task; let i = $index) {
+            <li (dblclick)="updateTaskEd(i)"
+              [class.editing]="task.editing"
+              [class.completed]="task.completed">
+              <div class="view">
+                <input class="toggle" type="checkbox" [checked]="task.completed" (change)=updateTaks(i) />
+                <label>{{ task.title }}</label>
+                <button class="destroy" (click)="deleteTask(i)"></button>
+              </div>
+              <input class="edit"(keydown.enter)="updateText(i, $event)" [value]="task.title" />
+            </li>
+          }
 
-        <!-- de momento estas desavilitado las funciones extras -->
-        <!-- <li class="completed">
-            <div class="view">
-              <input class="toggle" type="checkbox" checked />
-              <label>Learn JavaScript</label>
-              <button class="destroy"></button>
-            </div>
-            <input class="edit" value="Learn JavaScript" />
-          </li>
-          <li>
-            <div class="view">
-              <input class="toggle" type="checkbox" />
-              <label>Buy a unicorn</label>
-              <button class="destroy"></button>
-            </div>
-            <input class="edit" value="Buy a unicorn" />
-          </li>
-          <li class="editing">
-            <div class="view">
-              <input class="toggle" type="checkbox" />
-              <label>Make dishes</label>
-              <button class="destroy"></button>
-            </div>
-            <input class="edit" value="Make dishes" />
-          </li> -->
+          <!-- de momento estas desavilitado las funciones extras -->
+          <!-- <li class="completed">
+          <div class="view">
+            <input class="toggle" type="checkbox" checked />
+            <label>Learn JavaScript</label>
+            <button class="destroy"></button>
+          </div>
+          <input class="edit" value="Learn JavaScript" />
+        </li>
+        <li>
+          <div class="view">
+            <input class="toggle" type="checkbox" />
+            <label>Buy a unicorn</label>
+            <button class="destroy"></button>
+          </div>
+          <input class="edit" value="Buy a unicorn" />
+        </li>
+        <li class="editing">
+          <div class="view">
+            <input class="toggle" type="checkbox" />
+            <label>Make dishes</label>
+            <button class="destroy"></button>
+          </div>
+          <input class="edit" value="Make dishes" />
+        </li> -->
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
-    <footer class="footer" *ngIf="taskByFilter().length > 0">
-      <!-- This should be `0 items left` by default -->
-
-      <span *ngIf="tasks().length < 2; else elseBlock">
-        <!-- interesante por que si no se cumple podemos generar el if con lo que si se cumplira -->
-        <span class="todo-count"><strong>{{taskByFilter().length}};</strong> item</span>
-        <!-- al usar taskByFilter, usamos el estado que recibimos de un estado anterior -->
-      </span>
-
-      <!-- parte que se realiza si no cumple el if anterior -->
-      <ng-template #elseBlock>
-        <span class="todo-count"><strong>{{taskByFilter().length}};</strong> items</span>
-      </ng-template>
-
-
-      <!-- <span class="todo-count"><strong>{{tasks().length}};</strong> items</span> -->
-      <!-- Remove this if you don't implement routing -->
-      <!-- <h1>estado filter : {{filter()}}</h1> -->
-      <!-- con la linea de arriba obtenemos el valor del filter -->
-      <ul class="filters">
-        <li>
-          <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
-        </li>
-        <li>
-          <a (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
-        </li>
-        <li>
-          <a (click)="changeFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
-        </li>
-      </ul>
-      <!-- Hidden if no completed items are left ↓ -->
-      <button class="clear-completed">Clear completed</button>
-    </footer>
+    @if (taskByFilter().length > 0) {
+      <footer class="footer">
+        <!-- This should be `0 items left` by default -->
+        @if (tasks().length < 2) {
+          <span>
+            <!-- interesante por que si no se cumple podemos generar el if con lo que si se cumplira -->
+            <span class="todo-count"><strong>{{taskByFilter().length}};</strong> item</span>
+            <!-- al usar taskByFilter, usamos el estado que recibimos de un estado anterior -->
+          </span>
+        } @else {
+          <span class="todo-count"><strong>{{taskByFilter().length}};</strong> items</span>
+        }
+        <!-- parte que se realiza si no cumple el if anterior -->
+        <!-- <span class="todo-count"><strong>{{tasks().length}};</strong> items</span> -->
+        <!-- Remove this if you don't implement routing -->
+        <!-- <h1>estado filter : {{filter()}}</h1> -->
+        <!-- con la linea de arriba obtenemos el valor del filter -->
+        <ul class="filters">
+          <li>
+            <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
+          </li>
+          <li>
+            <a (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
+          </li>
+          <li>
+            <a (click)="changeFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
+          </li>
+        </ul>
+        <!-- Hidden if no completed items are left ↓ -->
+        <button class="clear-completed">Clear completed</button>
+      </footer>
+    }
   </div>
 </section>

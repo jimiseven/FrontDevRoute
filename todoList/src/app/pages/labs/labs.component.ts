@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { signal } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms'; //importacion del modulo
@@ -7,7 +7,7 @@ import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 @Component({
   selector: 'app-LabsComponent',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], //uso del modulo
+  imports: [ReactiveFormsModule], //uso del modulo
   templateUrl: './labs.component.html',
   styleUrl: './labs.component.css',
 })
