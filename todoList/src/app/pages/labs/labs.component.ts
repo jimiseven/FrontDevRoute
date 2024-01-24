@@ -18,7 +18,7 @@ export class LabsComponent {
   age = 17;
 
   person = signal({
-    name: 'joe',
+    name: 'torrico',
     age: 17,
   });
 

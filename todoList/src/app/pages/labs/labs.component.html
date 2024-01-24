@@ -45,7 +45,7 @@
     Mi contenido de nombre
   </div>
   @if (name() === 'jimi joe'){
-    <div>Soy jimi, funciona la nueva propuesta de angular</div>
+  <div>Soy jimi, funciona la nueva propuesta de angular</div>
   }
   <!-- recuerda que para usar el valor o los valores de una señal tenemos que suscribirnos al obgeto -->
   <!-- Estariamos usado los objetos como entrado a los atributos de un objeto -->
@@ -63,14 +63,14 @@
 
   <br>
   @if (person().name === 'joe' && person().age > 17){
-    <div>Soy jimi, funciona la nueva propuesta de angular if</div>
+  <div>Soy jimi, funciona la nueva propuesta de angular if</div>
   }
   @else{
-    <div>Soy jimi, funciona la nueva propuesta de angular else</div>
+  <div>Soy jimi, funciona la nueva propuesta de angular else</div>
   }
 
 
-  <hr />
+
 
 
   <!-- entonces con este es un uso de switch en angular, tomar en cuenta que tambien puede ser reactivo -->
@@ -104,7 +104,7 @@
 
   <p>
     <input type="text" [formControl]="nameCtrl"> <br />
-    <span class="message-error" [class.show] = "nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span>
+    <span class="message-error" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre Invalido</span>
   </p>
   <!-- Mediante las funciones de angular podemos hacer cambios tambien en la logica, pero tambien
   afecta los elementos en el html, existen varias clases que se pueden usar para hacer un buen uso
@@ -113,4 +113,38 @@ de los elementos   del html-->
 
   <input type="text">
 
+<ul>
+  @for (task of tasks() ; track task ; let i = $index) {
+    <li>{{ i }} {{tasks()}}</li>
+  }@empty {
+   <li><strong>lista esta vacia</strong></li>
+  }
+</ul>
+<!-- para tene una mejor comprecion o estar mas informados sobre el funcionanmiento de las sintaxis nueva
+de angular lo mejor es revisar la documentacion -->
+
+<div>
+  @switch (person().name) {
+    @case ('jimi') {
+      <p>jimi 1</p>
+    }
+    @case ('joe') {
+      <p>joe 1</p>
+    }
+    @case ('torrico') {
+      <p>torrico 1</p>
+    }
+    @case ('peredo') {
+      <p>peredo 1</p>
+    }
+    @default {
+      <p>en caso de que se salga</p>
+    }
+  }
 </div>
+
+
+</div>
+
+
+
