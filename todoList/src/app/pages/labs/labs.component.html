@@ -44,7 +44,9 @@
   <div *ngIf="name() === 'jimi joe'">
     Mi contenido de nombre
   </div>
-
+  @if (name() === 'jimi joe'){
+    <div>Soy jimi, funciona la nueva propuesta de angular</div>
+  }
   <!-- recuerda que para usar el valor o los valores de una señal tenemos que suscribirnos al obgeto -->
   <!-- Estariamos usado los objetos como entrado a los atributos de un objeto -->
   <div *ngIf="person().name === 'jimi' && person().age > 17; else elseBlock">
@@ -57,6 +59,15 @@
     informacion del ng template
   </ng-template>
 
+
+
+  <br>
+  @if (person().name === 'jimi' && person().age > 17){
+    <div>Soy jimi, funciona la nueva propuesta de angular</div>
+  }
+  <!-- else{
+    <div>Soy jimi, funciona la nueva propuesta de angular</div>
+  } -->
 
   <hr />
 
