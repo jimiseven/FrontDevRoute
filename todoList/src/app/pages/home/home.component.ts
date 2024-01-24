@@ -1,7 +1,15 @@
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
 //import { title } from 'process';
+//computed, effect, signal son lo elementos mas importantes en el ecosistemas de angular
 
 import { Task } from '../../models/task.model';
 @Component({
@@ -39,6 +47,37 @@ export class HomeComponent {
     nonNullable: true,
     validators: [Validators.required],
   });
+
+  injector = inject(Injector);
+
+  //momento en el que se inicializa un componente en el local storage
+  ngOnInit() {
+    const storage = localStorage.getItem('tasks');
+    if (storage) {
+      const tasks = JSON.parse(storage);
+      this.tasks.set(tasks);
+    }
+    this.trackTasks();
+  }
+
+  // constructor(){
+  //   // effect(() =>{
+  //   //   const tasks = this.tasks();
+  //   //   console.log(tasks);
+  //   //   localStorage.setItem('tasks', JSON.stringify(tasks));//cada que hagamos un cambio en el estado de la aplicacion, se actualizara el estado del localstorage en el jason
+  //   // })
+  // }
+
+  trackTasks() {
+    effect(
+      () => {
+        const tasks = this.tasks();
+        console.log(tasks);
+        localStorage.setItem('tasks', JSON.stringify(tasks)); //cada que hagamos un cambio en el estado de la aplicacion, se actualizara el estado del localstorage en el jason
+      },
+      { injector: this.injector }
+    ); //vigilante que efectua una accion de acuerdo al cambio
+  } //realizamo la injeccion del effect, por que no esta en el constructor
 
   changeHandler() {
     // const input = event.target as HTMLInputElement;
@@ -103,14 +142,13 @@ export class HomeComponent {
   filter = signal<'all' | 'pending' | 'completed'>('all');
   taskByFilter = computed(() => {
     const filter = this.filter();
-    const tasks = this.tasks();//mucho cuidado con el nombre de las variables
-
+    const tasks = this.tasks(); //mucho cuidado con el nombre de las variables
 
     if (filter === 'pending') {
-      return tasks.filter(task => !task.completed);
+      return tasks.filter((task) => !task.completed);
     }
     if (filter === 'completed') {
-      return tasks.filter(task => task.completed);
+      return tasks.filter((task) => task.completed);
     }
     return tasks;
   });
@@ -132,7 +170,6 @@ export class HomeComponent {
   }
 
   changeFilter(filter: 'all' | 'pending' | 'completed') {
-    this.filter.set(filter),
-     console.log(filter); //renderisamos el valor de filter por el console log
+    this.filter.set(filter), console.log(filter); //renderisamos el valor de filter por el console log
   }
 }
