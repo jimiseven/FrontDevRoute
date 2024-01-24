@@ -15,11 +15,11 @@ export class LabsComponent {
   title = 'bienvenido'; //este dato lo estamos pasando atraves del html
   tasks = signal(['Lista de: ', 'Componentes', 'de computadores']);
   name = signal('jimi joe');
-  age = 18;
+  age = 17;
 
   person = signal({
     name: 'joe',
-    age: 16,
+    age: 17,
   });
 
   colorCtrl = new FormControl(); //paquete de angular forms
