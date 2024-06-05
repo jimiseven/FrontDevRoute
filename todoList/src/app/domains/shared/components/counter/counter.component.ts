@@ -14,7 +14,8 @@ export class CounterComponent {
   @Input({required : true}) message ='';
 
   constructor(){
-//no asincrono
+//no asincrono, no tendria que ser asincrono
+// correria antes del render
     console.log('contructor');
     console.log('-' .repeat(10))
 
@@ -25,4 +26,30 @@ export class CounterComponent {
     console.log('-' .repeat(10));
     console.log(changes);
   }
+
+  ngOnInit(){
+    //se ejecuta solo una vez despúes de renderizar la app
+    console.log('ngOnInit');
+    console.log('-' .repeat(10));
+    console.log('duration =>' , this.duration);
+    console.log('message =>' , this.message);
+
+  }
+
+  ngAfterViewInit() {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    console.log('ngAfterVieewInit');
+    console.log('-' .repeat(10));
+
+  }
+
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    console.log('destrid');
+    console.log('-' .repeat(10));
+  }
+
 }
