@@ -1,5 +1,5 @@
 import { CommonModule} from '@angular/common';
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, signal, ɵɵresolveWindow } from '@angular/core';
 
 
 @Component({
@@ -12,6 +12,7 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 export class CounterComponent {
   @Input({required : true}) duration =0;
   @Input({required : true}) message ='';
+  counter = signal(0);
 
   constructor(){
 //no asincrono, no tendria que ser asincrono
@@ -43,7 +44,9 @@ export class CounterComponent {
     console.log('-' .repeat(10));
     console.log('duration =>' , this.duration);
     console.log('message =>' , this.message);
-
+    window.setInterval(()=>{
+      this.counter.update(statePrev => statePrev + 1);
+    }, 1000)
   }
 
   ngAfterViewInit() {
