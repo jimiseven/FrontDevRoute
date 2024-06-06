@@ -25,6 +25,16 @@ export class CounterComponent {
     console.log('ngOnChanges');
     console.log('-' .repeat(10));
     console.log(changes);
+    const duration = changes['duration'];
+    // // console.log(duration);
+    // if (duration) {//seria una validacion basica
+    //   this.doSomething();
+    //   }
+    //si queremos validar con un valor anterior seria de la siguiente manera
+    if (duration && duration.currentValue !== duration.previousValue) {
+      this.doSomething();
+    }
+
   }
 
   ngOnInit(){
@@ -52,4 +62,10 @@ export class CounterComponent {
     console.log('-' .repeat(10));
   }
 
+
+  //validaremos si queresmos que se actualice el estado de messages o duration
+  //ten en cuanta que te es asincrono, el codigo de ejecuta de arriba a abajo y a todos lados
+  doSomething(){
+    console.log('change duration');
+  }
 }
