@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
+
+import WaveSurfer from 'wavesurfer.js';//importacion de la libreria
 @Component({
   selector: 'app-wave-audio',
   standalone: true,
@@ -9,4 +11,15 @@ import { Component } from '@angular/core';
 })
 export class WaveAudioComponent {
 
+  @Input({required: true}) audioUrl!: string; // audioUrl: string = ''
+  @ViewChild('wave') container!: ElementRef;
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    WaveSurfer.create({
+      url:this.audioUrl,
+      container: this.container.nativeElement//document.getElementById 'en js', nosotros lo hicimos modo angular
+    })
+  }
 }
