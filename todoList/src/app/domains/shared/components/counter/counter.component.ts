@@ -13,6 +13,7 @@ export class CounterComponent {
   @Input({required : true}) duration =0;
   @Input({required : true}) message ='';
   counter = signal(0);
+  counterRef : number | undefined;
 
   constructor(){
 //no asincrono, no tendria que ser asincrono
@@ -45,6 +46,7 @@ export class CounterComponent {
     console.log('duration =>' , this.duration);
     console.log('message =>' , this.message);
     window.setInterval(()=>{
+      console.log("log");
       this.counter.update(statePrev => statePrev + 1);
     }, 1000)
   }
@@ -63,6 +65,7 @@ export class CounterComponent {
     //Add 'implements OnDestroy' to the class.
     console.log('destrid');
     console.log('-' .repeat(10));
+    // window.clearInterval(this.counterRef)
   }
 
 
