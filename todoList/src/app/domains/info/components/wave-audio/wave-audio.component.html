@@ -1,8 +1,13 @@
-<p>wave-audio works!</p>
+<p>wave-audio workss!</p>
 
 <div>
   <!-- de esta manera la libreria solo renderiza el div con el # -->
   <div #wave>
+    <button (click)="playPause()">
 
+      <span *ngIf="isPlaying(); else elseBlock">Pause</span>
+      <ng-template #elseBlock>Play</ng-template>
+
+    </button>
   </div>
 </div>

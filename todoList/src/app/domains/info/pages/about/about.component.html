@@ -1,14 +1,15 @@
-<p>about works!</p>
 
-  <input type="number" [value]="duration()" (change)="changeDuration($event)" >
+<div class="px-10">
+  <h1 class="text-lg font-bold">About</h1>
+  <p class="text.xs">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit vel deleniti numquam placeat deserunt impedit nemo et quia voluptatem alias unde distinctio eos, consectetur dignissimos facilis mollitia sequi dolorum saepe.</p>
+  <p class="text-xs">Numero de clientes:</p>
 
+  <div>
+    <app-wave-audio audioUrl="assets/audio.mp3" />
+  </div>
 
-  <input type="text" [value]="message()" (change)="changeMessage($event)" >
+</div>
 
-
-  <app-counter [duration]="duration()" [message] = "message()" *ngIf="duration()>10">
-
-  </app-counter>
 
 
   <!-- tener cuidado en caso de usar la etiqueta p  -->
