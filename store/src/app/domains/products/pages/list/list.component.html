@@ -2,8 +2,14 @@
 
 
 <div class="grid grid-cols-3 gap-8">
-  <app-product [title]="'Producto 1'" [price]="12" img="https://picsum.photos/640/640"
-    (addToCart)="fromChild($event)" />
+  <app-product *ngFor="let product of products()"
+  [title]="product.title"
+  [price]="product.price"
+  [img]="product.image"
+  (addToCart)="fromChild($event)" />
+
+  <br>
+  <div>sin ngfor</div>
   <app-product img="https://picsum.photos/640/640" />
   <app-product img="https://picsum.photos/640/640" />
 </div>
