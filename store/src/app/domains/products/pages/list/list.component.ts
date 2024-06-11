@@ -2,12 +2,14 @@ import { Product } from './../../../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+
 
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, ProductComponent],
+  imports: [CommonModule, ProductComponent, HeaderComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
@@ -30,7 +32,36 @@ export class ListComponent {
         price: 101,
         image : 'https://picsum.photos/640/640',
         creationAt : new Date().toISOString()
+      },
+      {
+        id: Date.now(),
+        title: 'pro 2',
+        price: 101,
+        image : 'https://picsum.photos/640/640',
+        creationAt : new Date().toISOString()
+      },
+      {
+        id: Date.now(),
+        title: 'pro 2',
+        price: 101,
+        image : 'https://picsum.photos/640/640',
+        creationAt : new Date().toISOString()
+      },
+      {
+        id: Date.now(),
+        title: 'pro 2',
+        price: 101,
+        image : 'https://picsum.photos/640/640',
+        creationAt : new Date().toISOString()
+      },
+      {
+        id: Date.now(),
+        title: 'pro 2',
+        price: 101,
+        image : 'https://picsum.photos/640/640',
+        creationAt : new Date().toISOString()
       }
+
     ];
     this.products.set(initProducts)
   }
