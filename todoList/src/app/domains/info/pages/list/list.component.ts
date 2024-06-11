@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 
-
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, ProductComponent],
+  imports: [],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
