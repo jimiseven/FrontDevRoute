@@ -1,8 +1,9 @@
 import { Product } from './../../../../models/product.model';
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { CartService } from '../../../shared/services/cart.service';
 
 
 
@@ -16,7 +17,9 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 export class ListComponent {
 
   products = signal<Product[]>([]);
-  cart = signal<Product[]>([]);
+  private cartService = inject(CartService);
+
+  // cart = signal<Product[]>([]); ya no necesitamos por que estamos usando un servicio
 
   constructor(){
     const initProducts: Product[] = [
@@ -76,6 +79,7 @@ export class ListComponent {
   addToCart(product  : Product){
     // console.log('desde el comp hijo');
     // console.log(event);
-    this.cart.update(prevState => [...prevState, product])
+    // this.cart.update(prevState => [...prevState, product]) ya no lo necesitamos por el servicio
+    this.cartService.addToCart(product);
   }
 }
