@@ -3,12 +3,15 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContadorComponent } from './contador.component';
+import { ContadorComponent } from './contador/contador.component';
+import { HeroeComponent } from './heroes/heroe/heroe.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContadorComponent
+    ContadorComponent,
+    HeroeComponent
   ],
   imports: [
     BrowserModule,
@@ -19,4 +22,5 @@ import { ContadorComponent } from './contador.component';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
