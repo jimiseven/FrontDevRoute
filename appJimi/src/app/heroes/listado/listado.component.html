@@ -1,5 +1,12 @@
 <p>listado works!</p>
 
+<div *ngIf="valor === true">
+  <h1>Heroe borrado</h1>
+  <span>{{ heroeBorrado }}</span>
+
+ </div>
+
+
 <button (click)="borrarHeroe()">
   Borrar
 </button>
@@ -10,11 +17,4 @@
   </li>
 </ul>
 
-
-
- <div>
-  <h1>Heroe borrado</h1>
-  <span>{{ heroeBorrado }}</span>
-
- </div>
 
