@@ -15,7 +15,7 @@ import { ContadorComponent } from './contador.component';
     AppRoutingModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration()//son servicios que se usan
   ],
   bootstrap: [AppComponent]
 })
