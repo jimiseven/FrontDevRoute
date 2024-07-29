@@ -1,10 +1,14 @@
 <p>listado works!</p>
 
-<div *ngIf="valor === true">
+<div *ngIf="valor === false; else noBorrado">
   <h1>Heroe borrado</h1>
   <span>{{ heroeBorrado }}</span>
 
  </div>
+<!-- referencia local #name, para referencias del template -->
+ <ng-template #noBorrado>
+  <h1>No ha borrado nada</h1>
+ </ng-template>
 
 
 <button (click)="borrarHeroe()">
