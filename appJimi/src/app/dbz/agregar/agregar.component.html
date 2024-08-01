@@ -1,0 +1,25 @@
+<p>agregar worksqq!</p>
+
+
+<h3>Agregar</h3>
+    <small> nombre {{ nuevo.nombre }}</small>
+    <small> poder {{ nuevo.poder }}</small>
+    <hr>
+
+    <!-- quien definira la funcion sera el form -->
+    <form (ngSubmit)="(agregar())">
+      <input type="text"
+        placeholder="Nombre"
+        name = "nombre"
+        [(ngModel)] = "nuevo.nombre"
+        >
+      <input type="number"
+      placeholder="Poder"
+      name = "poder"
+      [(ngModel)] = "nuevo.poder"
+      >
+<!-- el botton no define la funcion -->
+      <button type="submit">
+        Agregar
+      </button>
+    </form>

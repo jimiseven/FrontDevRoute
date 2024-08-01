@@ -6,36 +6,22 @@
 
 <div class="row">
   <div class="col">
-    <h3>Personajes</h3>
+    <app-personajes [personajes]="personajes">
+    </app-personajes>
+    <!-- <h3>Personajes</h3>
     <hr>
     <ul>
-      <li>Krillin - 700 </li>
-      <li>goku - 700 </li>
-      <li>jamsha - 700 </li>
-    </ul>
+      <li *ngFor="let personaje of personajes">
+        {{ personaje.nombre }} : {{personaje.poder | number}}
+      </li>
+    </ul> -->
   </div>
   <div class="col">
-    <h3>Agregar</h3>
-    <small> nombre {{ nuevo.nombre }}</small>
-    <small> poder {{ nuevo.poder }}</small>
-    <hr>
+    <app-agregar
+    [personajes]="personajes"
+    [nuevo]="nuevo"
+    >
 
-    <!-- quien definira la funcion sera el form -->
-    <form (ngSubmit)="(metodoName1())">
-      <input type="text"
-        placeholder="Nombre"
-        name = "nombre"
-        [(ngModel)] = "nuevo.nombre"
-        >
-      <input type="number"
-      placeholder="Poder"
-      name = "poder"
-      [(ngModel)] = "nuevo.poder"
-      >
-<!-- el botton no define la funcion -->
-      <button type="submit">
-        Agregar
-      </button>
-    </form>
+    </app-agregar>
   </div>
 </div>
