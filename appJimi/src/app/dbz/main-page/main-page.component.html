@@ -16,12 +16,22 @@
   </div>
   <div class="col">
     <h3>Agregar</h3>
+    <small> nombre {{ nuevo.nombre }}</small>
+    <small> poder {{ nuevo.poder }}</small>
     <hr>
 
     <!-- quien definira la funcion sera el form -->
     <form (ngSubmit)="(metodoName1())">
-      <input type="text" placeholder="Nombre">
-      <input type="number" placeholder="Poder">
+      <input type="text"
+        placeholder="Nombre"
+        name = "nombre"
+        [(ngModel)] = "nuevo.nombre"
+        >
+      <input type="number"
+      placeholder="Poder"
+      name = "poder"
+      [(ngModel)] = "nuevo.poder"
+      >
 <!-- el botton no define la funcion -->
       <button type="submit">
         Agregar
