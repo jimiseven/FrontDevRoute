@@ -18,11 +18,12 @@
     <h3>Agregar</h3>
     <hr>
 
-    <form>
+    <!-- quien definira la funcion sera el form -->
+    <form (ngSubmit)="(metodoName1())">
       <input type="text" placeholder="Nombre">
       <input type="number" placeholder="Poder">
-
-      <button>
+<!-- el botton no define la funcion -->
+      <button type="submit">
         Agregar
       </button>
     </form>
