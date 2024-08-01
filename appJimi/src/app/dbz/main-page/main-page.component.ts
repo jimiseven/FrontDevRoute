@@ -1,3 +1,4 @@
+import { DbzService } from './../services/dbz.services';
 import { Component } from '@angular/core';
 import { ifError } from 'assert';
 import { Personaje } from '../interfaces/dbz.interface';
@@ -55,5 +56,10 @@ export class MainPageComponent {
     console.log('main page componet');
     console.log( argumento);
     this.personajes.push(argumento);
+  }
+
+  //uso del services INYECION DE DEPENDENCIAS
+  constructor( private dbzService : DbzService ){
+
   }
 }
