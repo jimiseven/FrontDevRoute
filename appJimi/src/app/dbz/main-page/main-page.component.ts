@@ -50,4 +50,10 @@ export class MainPageComponent {
   //   }
 
   // }
+
+  agregarNuevoPersonaje( argumento : Personaje){
+    console.log('main page componet');
+    console.log( argumento);
+    this.personajes.push(argumento);
+  }
 }
