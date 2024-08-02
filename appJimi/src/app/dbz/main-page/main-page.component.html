@@ -1,13 +1,10 @@
-
-
 <h1>Dragon ball z</h1>
 <hr>
 
 
 <div class="row">
   <div class="col">
-    <app-personajes [personajes]="personajes">
-    </app-personajes>
+    <app-personajes></app-personajes>
     <!-- <h3>Personajes</h3>
     <hr>
     <ul>
@@ -17,11 +14,8 @@
     </ul> -->
   </div>
   <div class="col">
-    <app-agregar
-    [nuevo]="nuevo"
-    (onNuevoPersonaje)="agregarNuevoPersonaje( $event )"
-    >
-
-    </app-agregar>
+    <app-agregar [nuevo]="nuevo"></app-agregar>
   </div>
+
+  <!-- <h1>{{ personajes }}</h1> -->
 </div>
