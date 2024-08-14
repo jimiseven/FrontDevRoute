@@ -1,7 +1,10 @@
 <p>list works!</p>
 
 <div class="grid grid-cols-3">
-  <app-product [title]="'Producto 1'" [price]="12" img = "http://picsum.photos/640/640?r=23" ></app-product>
+  <app-product [title]="'Producto 1'" [price]="12" img = "http://picsum.photos/640/640?r=23" (addToCart)="fromChild($event)"></app-product>
   <app-product [title]="'Producto 2'" [price]="12" img = "http://picsum.photos/640/640?r=25"></app-product>
   <app-product [title]="'Producto 3'" [price]="12"img = "http://picsum.photos/640/640?r=26"></app-product>
+
+
+
 </div>

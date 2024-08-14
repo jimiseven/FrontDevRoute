@@ -10,4 +10,8 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
+  fromChild(event : string){
+    console.log('estamos recibiendo datos desde el padre');
+    console.log(event);
+  }
 }
