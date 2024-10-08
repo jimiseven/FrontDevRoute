@@ -11,5 +11,15 @@ import { CounterComponent } from '../../../shared/components/counter/counter.com
 })
 export class AboutComponent {
   duration = signal (1000);
-  messagen = signal ('hola')
+  message = signal ('hola')
+
+  changeDuration (event : Event){
+    const input = event.target as HTMLInputElement;
+    this.duration.set(input.valueAsNumber);  
+  }
+  
+  changeMessage (event : Event){
+    const input = event.target as HTMLInputElement;
+    this.message.set(input.value);  
+  }
 }
