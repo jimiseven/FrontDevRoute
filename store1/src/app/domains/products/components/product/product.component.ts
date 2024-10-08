@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
-
+import { Product } from '../../../shared/models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -9,15 +9,17 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-  @Input() img : string = '../../../../../assets/imgs/productos_default.png';
-  @Input() price : number = 0;
-  @Input() title : string = '';
+
+  @Input({required : true}) product!: Product;
+  // @Input() img : string = '../../../../../assets/imgs/productos_default.png';
+  // @Input() price : number = 0;
+  // @Input() title : string = '';
 
   @Output() addToCart = new EventEmitter();
 
   addCartHand() {
     console.log('click desde el hijo');
-    this.addToCart.emit('hola desde el hijo' + this.title);
+    this.addToCart.emit('hola desde el hijo' + this.product.title);
   }
 }
 
