@@ -9,7 +9,7 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-  @Input() img : string = '';
+  @Input() img : string = '../../../../../assets/imgs/productos_default.png';
   @Input() price : number = 0;
   @Input() title : string = '';
 
