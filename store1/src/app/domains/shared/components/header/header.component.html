@@ -29,7 +29,8 @@
       </ul>
     </div>
     <div class="flex items-center">
-      <button class="px-4" (click)="toogleSideMenu()">
+      <button class="px-2 border rounded relative" (click)="toogleSideMenu()">
+        <div class="absolute -top-4 -left-4 rounded h-5 w-5 bg-black text-white text-xs">{{ cart.length }}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -58,7 +59,8 @@
 >
   <div class="flex justify-between items-center">
     <p class="text-xl">My Cart</p>
-    <button (click)="toogleSideMenu()">
+    <button class="px-2 border rounded relative" (click)="toogleSideMenu()">
+      <div class="absolute -top-4 -left-4 rounded h-5 w-5 bg-black text-white text-xs">{{ cart.length }}</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -74,5 +76,11 @@
         />
       </svg>
     </button>
+  </div>
+  <div>
+    <div *ngFor="let product of cart">
+      <p>{{ product.title }}</p>
+      <p>{{ product.price }}</p>
+    </div>
   </div>
 </div>
