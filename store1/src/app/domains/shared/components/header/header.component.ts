@@ -1,6 +1,7 @@
-import { Component, Input, SimpleChanges, signal } from '@angular/core';
+import { Component, Input, SimpleChanges, inject, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -11,23 +12,13 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   hideMenu = signal(true);
-  tot = signal(0);
+  private cartServices = inject(CartService);
+  cart = this.cartServices.cart;
+  total = this.cartServices.total;
 
-  @Input({required : true}) cart: Product[] = []; 
+  // @Input({required : true}) cart: Product[] = []; (ya no se usara , gracias al store, pero tenemos que inyectar el servicio)
   toogleSideMenu(){
     this.hideMenu.update(prevState => !prevState)
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    const cart = changes['cart'];
-    if(cart){
-      this.tot.set(this.calcTol());
-    }
-  }
-
-  calcTol(){
-    return this.cart.reduce((total, product) =>total + product.price, 0);
-  }
 }
