@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { ProductComponent } from '../../components/product/product.component';
-import { Product } from '../../../shared/models/product.model';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { CartService } from '../../../shared/services/cart.service';
+import { ProductComponent } from '@products/components/product/product.component';
+import { Product } from '@shared/models/product.model';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -16,33 +17,20 @@ export class ListComponent {
   products = signal<Product[]>([]);
   private cartServices = inject(CartService);
   // cart = signal<Product[]>([]); (quitado por uso del store)
+  private productServices = inject(ProductService);
 
-constructor(){
-  const initProducts:Product[] = [
-    {
-      id:Date.now(),
-      title:'Pro 1',
-      price: 101,
-      image: 'https://picsum.photos/640/640?r=12',
-      creatAt : new Date().toISOString() 
-    },
-    {
-      id:Date.now(),
-      title:'Pro 2',
-      price: 102,
-      image: 'https://picsum.photos/640/640?r=12',
-      creatAt : new Date().toISOString()
-    },
-    {
-      id:Date.now(),
-      title:'Pro 3',
-      price: 103,
-      image: 'https://picsum.photos/640/640?r=12',
-      creatAt : new Date().toISOString()
-    },
-  ]
-  this.products.set(initProducts);
-}
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.productServices.getProduts()
+    .subscribe({
+      next: (products) => {
+        this.products.set(products);
+      },
+      error: () => {}
+    })
+  }
 
   
 
