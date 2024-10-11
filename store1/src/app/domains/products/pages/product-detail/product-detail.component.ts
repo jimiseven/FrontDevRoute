@@ -3,6 +3,7 @@ import { Component, EventEmitter, inject, Input, Output, signal } from '@angular
 import { Product } from '@shared/models/product.model';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from '@products/components/product/product.component';
+import { CartService } from '@shared/services/cart.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ProductDetailComponent {
   product = signal<Product | null>(null);
   cover = signal('');
   private productService = inject(ProductService);
+  private cartServices = inject(CartService);
 
   ngOnInit(){
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -39,9 +41,10 @@ export class ProductDetailComponent {
   changeCover(newImage: string){
     this.cover.set(newImage);
   }
-  // @Output() addToCart = new EventEmitter();
-
-  // addCartHand() {
-  //   this.addToCart.emit(this.product1);
-  // }
+  addCart(){
+    const product = this.product();
+    if(product){
+    this.cartServices.addToCart(product);
+    }
+  }
 }
