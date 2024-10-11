@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ProductService } from '@shared/services/product.service';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 })
 export class ProductDetailComponent {
 
+  private productService = inject(ProductService);
 }

@@ -15,4 +15,8 @@ export class ProductService {
   getProduts(){
     return this.htpp.get<Product[]>('https://api.escuelajs.co/api/v1/products');
   }
+
+  getOne(id: string){
+    return this.htpp.get<Product[]>('https://api.escuelajs.co/api/v1/products/${id}');
+  }
 }
