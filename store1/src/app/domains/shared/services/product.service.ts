@@ -7,16 +7,16 @@ import { Product } from '../models/product.model';
 })
 export class ProductService {
 
-  private htpp = inject(HttpClient);
+  private http = inject(HttpClient);  // Corrección de typo (http en lugar de htpp)
 
   constructor() { }
 
-
-  getProduts(){
-    return this.htpp.get<Product[]>('https://api.escuelajs.co/api/v1/products');
+  getProduts() {
+    return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products');
   }
 
-  getOne(id: string){
-    return this.htpp.get<Product[]>('https://api.escuelajs.co/api/v1/products/${id}');
+  getOne(id: string) {
+    // Usa template literals para interpolar el id en la URL
+    return this.http.get<Product>(`https://api.escuelajs.co/api/v1/products/${id}`);
   }
 }
